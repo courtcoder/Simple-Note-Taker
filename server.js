@@ -8,9 +8,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-app.use("./api", apiRoutes);
-app.use("./html", htmlRoutes);
+app.use("/api", apiRoutes);
+app.use("/", htmlRoutes);
 
 app.listen(PORT, () =>
-  console.log(`App server now on port ${PORT}!`)
+  console.log(`App listening at http://localhost:${PORT} 🚀`)
 );
+// boiler plate for routes/express server backbone
