@@ -8,7 +8,7 @@ const writeAsync = util.promisify(fs.writeFile);
 
 class Notes {
   read() {
-    return readAsync("db/db.json", "utf8");
+    return readAsync("./db/db.json", "utf8");
   }
 
   readAllNotes() {
@@ -24,7 +24,7 @@ class Notes {
   }
 
   write(data) {
-    return writeAsync("db/db.json", JSON.stringify(data));
+    return writeAsync("./db/db.json", JSON.stringify(data));
   }
 
   //Writes new notes
@@ -41,7 +41,7 @@ class Notes {
 
   // deletes notes by id
   deleteNotes(id) {
-    // needs to read all the notes, then I need to somehow remove the note that matches the id taht is being passed in, then I need to wite the notes again.
+
     return this.readAllNotes()
       .then((data) => data.filter((item) => item.id !== id))
       .then((updatedNotes) => this.write(updatedNotes));
